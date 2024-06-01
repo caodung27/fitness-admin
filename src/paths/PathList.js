@@ -1,8 +1,20 @@
 import * as React from 'react';
-import { List, Datagrid, TextField, DateField, EditButton, DeleteButton } from 'react-admin';
+import { List, Datagrid, TextField, DateField, EditButton, DeleteButton, TextInput, Filter, SelectInput } from 'react-admin';
+
+// Define a Filter component for the search bar
+const PathFilter = (props) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+        <SelectInput source="type" choices={[
+            { id: 'Walking', name: 'Walking' },
+            { id: 'Running', name: 'Running' },
+            { id: 'Cycling', name: 'Cycling' }
+        ]} />
+    </Filter>
+);
 
 export const PathList = (props) => (
-    <List {...props}>
+    <List filters={<PathFilter />} sort={{ field: 'type', order: 'ASC' }} {...props}>
         <Datagrid>
             <TextField source="id" />
             <TextField source="type" />
