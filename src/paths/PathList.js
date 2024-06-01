@@ -15,8 +15,10 @@ const PathFilter = (props) => (
         <TextInput label="End Latitude" source="end.coordinates[0]" />
         <TextInput label="End Longitude" source="end.coordinates[1]" />
         <DateInput label="Created At" source="createdAt" />
+        <TextInput label="Speed" source="speed" />
     </Filter>
 );
+
 
 export const PathList = (props) => (
     <List filters={<PathFilter />} sort={{ field: 'type', order: 'ASC' }} {...props}>
